@@ -8,7 +8,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 class VoyageController extends AbstractActionController {
 
     public function accueilAction() {
-        $this->layout()->setTemplate('layout/layout2.phtml');
+        $this->layout()->setTemplate('routestest/layoutsLocaux/local_1.phtml');
         return new ViewModel(array('Pascale' => '20'));
     }
 
