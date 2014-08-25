@@ -4,6 +4,11 @@ namespace Articles;
 
 use Zend\ModuleManager\ModuleManager;
 
+use Articles\Model\Articles;
+use Articles\Model\ArticlesTable;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
+
 class Module {
 
     public function getAutoloaderConfig() {
@@ -21,6 +26,24 @@ class Module {
 
     public function getConfig() {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function getServiceConfig() {
+        return array(
+            'factories' => array(
+                'Articles\Model\ArticlesTable' => function($sm) {
+            $tableGateway = $sm->get('ArticlesTableGateway');
+            $table = new ArticlesTable($tableGateway);
+            return $table;
+        },
+                'ArticlesTableGateway' => function ($sm) {
+            $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+            $resultSetPrototype = new ResultSet();
+            $resultSetPrototype->setArrayObjectPrototype(new Articles());
+            return new TableGateway('articles', $dbAdapter, null, $resultSetPrototype);
+        },
+            ),
+        );
     }
 
 }

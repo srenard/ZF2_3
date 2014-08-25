@@ -23,7 +23,7 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'Articles\Controller\Articles',
-                        'action' => 'index',
+                        'action' => 'tableau',
                     ),
                 ),
             ),
