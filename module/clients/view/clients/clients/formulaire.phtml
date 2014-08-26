@@ -1,0 +1,106 @@
+<?php
+$title = 'Clients';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+
+use Zend\Version;
+
+if (isset($test)) {
+    echo $test->afficheClient();
+    exit();
+}
+$formulaire->prepare();
+$formulaire->setAttribute('action', $this->url('clients'));
+$formLabel = $this->plugin('formLabel');
+echo $this->form()->openTag($formulaire);
+?>
+<div class="champ">
+    <?php
+    $nom = $formulaire->get('id');
+    echo $this->formHidden($nom);
+    ?>
+</div>
+<div class="champ">
+    <?php
+    $nom = $formulaire->get('nom');
+    echo $this->formRow($nom);
+    ?>
+</div>
+<div class="champ">
+    <div class="champ">
+        <?php
+        $prenom = $formulaire->get('prenom');
+        echo $formLabel->openTag() . $prenom->getOption('label');
+        echo $this->formText($prenom);
+        echo $this->formElementErrors($prenom);
+        echo $formLabel->closeTag();
+        ?>
+    </div>
+    <div class="champ">
+        <?php
+        $sexe = $formulaire->get('client');
+        echo $formLabel->openTag() . $sexe->getOption('label');
+        echo $this->formCheckbox($sexe);
+        echo $this->formElementErrors($sexe);
+        echo $formLabel->closeTag();
+        ?>
+    </div>  
+
+    <div class="champ">
+        <?php
+        $profession = $formulaire->get('profession');
+        echo $formLabel->openTag() . $profession->getOption('label');
+        echo $this->formSelect($profession);
+        echo $this->formElementErrors($profession);
+        echo $formLabel->closeTag();
+        ?>
+    </div>  
+
+    <div class="champ">
+        <?php
+        $articlesPref = $formulaire->get('articlesPref');
+        echo $this->formCollection($articlesPref);
+        echo $this->formElementErrors($articlesPref);
+        ?>
+    </div>
+
+    <div class="champ">
+        <?php
+        $sexe = $formulaire->get('sexe');
+        echo $formLabel->openTag() . $sexe->getOption('label');
+        echo $this->formRadio($sexe);
+        echo $this->formElementErrors($sexe);
+        echo $formLabel->closeTag();
+        ?>
+    </div>
+
+    <div class="champ">
+        <?php
+        $couleur = $formulaire->get('couleur');
+        echo $formLabel->openTag() . $couleur->getOption('label');
+        echo $this->formColor($couleur);
+        echo $this->formElementErrors($couleur);
+        echo $formLabel->closeTag();
+        ?>
+    </div>
+
+    <div class="champ">
+        <?php
+        $reset = $formulaire->get('reset');
+        echo $this->formSubmit($reset);
+        ?>
+    </div>
+
+    <div class="champ">
+        <?php
+        $envoyer = $formulaire->get('envoyer');
+        echo $this->formSubmit($envoyer);
+        ?>
+    </div>
+    <?php echo $this->form()->closeTag() ?>
+    <?php
+    $version = new Zend\Version\Version;
+    echo 'Version du framework : ' . $version::VERSION;
+    
