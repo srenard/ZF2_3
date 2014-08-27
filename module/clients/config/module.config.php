@@ -13,6 +13,16 @@ return array(
     ),
     'router' => array(
         'routes' => array(
+            'upload' => array(
+                'type' => 'Zend\Mvc\Router\Http\literal',
+                'options' => array(
+                    'route' => '/upload',
+                    'defaults' => array(
+                        'controller' => 'Clients\Controller\Clients',
+                        'action' => 'upload'
+                    ),
+                ),
+            ),
             'clients' => array(
                 'type' => 'segment',
                 'options' => array(

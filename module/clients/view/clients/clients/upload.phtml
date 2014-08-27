@@ -1,0 +1,33 @@
+<h2>Formulaire !!</h2>
+<?php
+
+use Zend\Version;
+
+if (isset($data)) {
+    var_dump($data);
+    echo'<img src="test.jpg">';
+    exit();
+}
+$formulaire->setAttribute('action', $this->url('upload'));
+$formulaire->setAttribute('enctype', 'multipart/form-data');
+$formulaire->prepare();
+$formLabel = $this->plugin('formLabel');
+echo $this->form()->openTag($formulaire);
+?>
+
+<div class="champ">
+    <?php
+    $fichier = $formulaire->get('f');
+    echo $formLabel->openTag() . $fichier->getOption('label');
+    echo $this->formFile($fichier);
+    echo $this->formElementErrors($fichier);
+    echo $formLabel->closeTag();
+    ?>
+</div>
+<button>Submit</button>
+<?php echo $this->form()->closeTag() ?>
+<?php
+$version = new Zend\Version\Version;
+echo 'Version du framework : ' . $version::VERSION;
+
+
