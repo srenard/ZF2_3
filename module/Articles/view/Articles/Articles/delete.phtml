@@ -1,0 +1,22 @@
+<?php
+$title = 'Effacement d\'un article';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>Etes-vous sûr de vouloir effacer l'article 
+    '<?php echo $this->escapeHtml($article->articles_nom); ?>' de référence
+    '<?php echo $this->escapeHtml($article->articles_ref); ?>'?
+</p>
+<?php
+$url = $this->url('articles', array(
+    'action' => 'delete',
+    'articles_id' => $this->id,
+        ));
+?>
+<form action="<?php echo $url; ?>" method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo (int) $article->articles_id; ?>" />
+        <input type="submit" name="del" value="Yes" />
+        <input type="submit" name="del" value="No" />
+    </div>
+</form>
