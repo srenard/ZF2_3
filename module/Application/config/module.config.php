@@ -83,8 +83,12 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Db' => 'Application\Controller\DbController'
+            'Application\Controller\Index' => 
+                                'Application\Controller\IndexController',
+            'Application\Controller\Db' =>
+                                'Application\Controller\DbController',
+            'Application\Controller\validateurs' =>
+                                'Application\Controller\validateursController'
         ),
     ),
     'view_manager' => array(
