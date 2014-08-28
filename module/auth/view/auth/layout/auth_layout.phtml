@@ -1,0 +1,15 @@
+<?php echo $this->doctype(); ?>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <?php
+        echo $this->getRequest()->getBasePath();
+//$this->getHelper('basePath')->setBasePath();
+        echo $this->headLink()->prependStylesheet('../css/admin_css.css')
+        ?>
+    </head>
+    <body>
+        <h1>Authentification</h1>
+        <?php echo $this->content; ?>
+    </body>
+</html>
