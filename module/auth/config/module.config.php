@@ -41,4 +41,9 @@ return array(
             'auth' => __DIR__ . '/../view',
         ),
     ),
+    'controller_plugins' => array(
+        'invokables' => array(
+            'aclplugin' => 'auth\Controller\Plugin\aclplugin',
+        )
+    ),
 );
