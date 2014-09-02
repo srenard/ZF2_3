@@ -21,7 +21,8 @@ class AclPlugin extends AbstractPlugin {
 // Création des ressources
         $acl->addResource(new Resource('Clients'));
         $acl->addResource(new Resource('Articles'))
-                ->addResource(new Resource('login'))
+                //->addResource(new Resource('login'))
+                ->addResource(new Resource('entree'))
                 ->addResource(new Resource('index'))
                 ->addResource(new Resource('add'))
                 ->addResource(new Resource('tableau'))
@@ -51,10 +52,12 @@ class AclPlugin extends AbstractPlugin {
                 ->addResource(new Resource('formulaire'));
                  */
 // Création des autorisations
+        $acl->allow('visiteur', 'entree');
         $acl->allow('visiteur', 'index');
-       // $acl->allow('visiteur', 'tableau');
-        $acl->allow('visiteur', 'add');
-        $acl->allow('visiteur', 'edit');
+        $acl->allow('admin');
+        //$acl->allow('visiteur', 'tableau');
+        //$acl->allow('visiteur', 'add');
+        //$acl->allow('visiteur', 'edit');
         /*
         $acl->allow('visiteur', 'voyage');
         $acl->allow('visiteur', 'accueil');
@@ -92,9 +95,9 @@ class AclPlugin extends AbstractPlugin {
         $sm = $this->getController()
                 ->getServiceLocator('authService');
         $session = $sm->get('AuthService')->getStorage()->read();
-        if (isset($session->utilisateurs_role)) {
-            if ($session->utilisateurs_role != '') {
-                $role = $session->utilisateurs_role;
+        if (isset($session->admin_auto)) {
+            if ($session->admin_auto != '') {
+                $role = $session->admin_auto;
             } else {
                 $role = 'visiteur';
             }

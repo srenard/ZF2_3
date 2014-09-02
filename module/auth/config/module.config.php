@@ -3,7 +3,7 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'auth\Controller\login' => 'auth\Controller\LoginController',
+            'auth\Controller\Login' => 'auth\Controller\LoginController',
         ),
     ),
     'router' => array(
@@ -13,9 +13,9 @@ return array(
                 'options' => array(
                     'route' => '/auth',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'auth\Controller',
+                       '__NAMESPACE__' => 'auth\Controller',
                         'controller' => 'Login',
-                        'action' => 'index',
+                        'action' => 'entree',
                     ),
                 ),
                 'may_terminate' => true,

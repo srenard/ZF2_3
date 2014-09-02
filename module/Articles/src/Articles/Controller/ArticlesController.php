@@ -55,6 +55,7 @@ class ArticlesController extends AbstractActionController {
             if ($form->isValid()) {
                 $article->exchangeArray($form->getData());
                 $this->getArticlesTable()->saveArticles($article);
+                $this->getServiceLocator()->get('Zend\Log')->info('Bonjour');
                 return $this->redirect()->toRoute('articles');
             }
         }
