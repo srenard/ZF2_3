@@ -1,3 +1,7 @@
+Code que j'utilise dans mon module de formation.
+
+Il reprend le squelette fourni par les auteurs du framework et bien entendu le framework lui-même que j'ai installé avec composer.
+
 ZendSkeletonApplication
 =======================
 
