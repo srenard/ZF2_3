@@ -26,12 +26,14 @@ class AclPlugin extends AbstractPlugin {
                 ->addResource(new Resource('index'))
                 ->addResource(new Resource('add'))
                 ->addResource(new Resource('tableau'))
-                ->addResource(new Resource('edit'));
+                ->addResource(new Resource('edit'))
+                ->addResource(new Resource('accueil'));
+                
         /*
-                ->addResource(new Resource('voyage'))
+                
                 ->addResource(new Resource('societe'))
                 ->addResource(new Resource('histoire'))
-                ->addResource(new Resource('histoire1'))
+                ->addResource(new Resource('histoire1'))->addResource(new Resource('voyage'));
                 ->addResource(new Resource('histoire2'))
                 ->addResource(new Resource('histoire3'))
                 ->addResource(new Resource('histoire4'))
