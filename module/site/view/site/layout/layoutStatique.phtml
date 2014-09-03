@@ -1,0 +1,43 @@
+<?php echo $this->doctype(); ?>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <!-- css -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon',
+                    'type' => 'image/vnd.
+microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+                ->appendStylesheet($this->basePath() . '/css/pagesStatiques.css')
+        ?>
+        <!-- Javascript -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath() .
+                        '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/jquery.min.js')
+        ?>
+    </head>
+    <body>
+        <?php
+        $layoutEnfants = $this->viewModel()->getCurrent()->getChildren();
+        $enfant = $layoutEnfants[0];
+        ?>
+        <h1><?php echo $enfant->titre ?></h1>
+        <div id='conteneur_principal'>
+            <?php
+            // Fil d'ariane
+            $nav = $this->navigation('Navigation');
+            echo '<div id="fil">' . $nav->breadcrumbs() . '</div>';
+            //Menu de gauche
+            echo '<div id="menu">' .
+            $nav->menu()->render($this->navigation()->getContainer())
+            . '</div>';
+            ?>
+            <!--Zone de texte -->
+            <div id="zoneA">
+                <?php echo $this->content ?> 
+            </div>
+        </div>
+    </body>
+</html>

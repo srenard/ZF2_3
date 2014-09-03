@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Global Configuration Override
  *
@@ -10,7 +11,6 @@
  * control, so do not include passwords or other sensitive information in this
  * file.
  */
-
 return array(
     'db' => array(
         'driver' => 'Pdo',
@@ -22,7 +22,80 @@ return array(
     'service_manager' => array(
         'factories' => array(
             'Zend\Db\Adapter\Adapter'
-            => 'Zend\Db\Adapter\AdapterServiceFactory'
+            => 'Zend\Db\Adapter\AdapterServiceFactory',
+            'Navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+        )
+    ),
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Accueil',
+                'route' => 'accueil',
+                'pages' => array(
+                    array(
+                        'label' => 'Société',
+                        'route' => 'societe'
+                    ),
+                    array(
+                        'label' => 'Histoire',
+                        'route' => 'histoire',
+                        'pages' => array(
+                            array(
+                                'label' => 'Histoire1',
+                                'route' => 'histoire1',
+                            ),
+                            array(
+                                'label' => 'Histoire2',
+                                'route' => 'histoire2',
+                            ),
+                            array(
+                                'label' => 'Histoire3',
+                                'route' => 'histoire3',
+                            ),
+                            array(
+                                'label' => 'Histoire4',
+                                'route' => 'histoire4',
+                            ),
+                            array(
+                                'label' => 'Histoire5',
+                                'route' => 'histoire5',
+                                'pages' => array(
+                                    array(
+                                        'label' => 'H2010',
+                                        'route' => 'h2010',
+                                    ),
+                                    array(
+                                        'label' => 'H2011',
+                                        'route' => 'h2011',
+                                    ),
+                                    array(
+                                        'label' => 'H2012',
+                                        'route' => 'h2012',
+                                    ),
+                                )
+                            ),
+                        )
+                    ),
+                    array(
+                        'label' => 'Groupe',
+                        'route' => 'groupe'
+                    ),
+                    array(
+                        'label' => 'Contact',
+                        'route' => 'contact',
+                        'pages' => array(
+                            array(
+                                'label' => 'Message',
+                                'route' => 'message'
+                            ),
+                            array(
+                                'label' => 'Plan',
+                                'route' => 'plan'
+                            ),
+                        )
+                    ),
+                ),
+            )
         )
     ),
 );
