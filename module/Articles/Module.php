@@ -10,6 +10,8 @@ use Zend\Db\TableGateway\TableGateway;
 //Pour Attacher un événement
 use Zend\Mvc\MvcEvent;
 
+use Articles\Model\CreaPdf;
+
 class Module {
 
     public function getAutoloaderConfig() {
@@ -43,6 +45,10 @@ class Module {
             $resultSetPrototype->setArrayObjectPrototype(new Articles());
             return new TableGateway('articles', $dbAdapter, null, $resultSetPrototype);
         },
+                'CreaPdf' => function ($sm) {
+            $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+            return new CreaPdf($dbAdapter);
+        },
             ),
         );
     }
@@ -58,15 +64,15 @@ class Module {
       }, 100);
       }
      */
-    
+
     /*
-    public function onBootstrap(MvcEvent $event) {
-        $eventManager = $event->getApplication()->getEventManager();
-        $eventManager->attach(MvcEvent::EVENT_DISPATCH, function($e) {
-            foreach ($this->getServiceConfig()['factories'] as $fabrique => $classe) {
-                echo $fabrique . "<br />";
-            }
-        }, 100);
-    }
-    */
+      public function onBootstrap(MvcEvent $event) {
+      $eventManager = $event->getApplication()->getEventManager();
+      $eventManager->attach(MvcEvent::EVENT_DISPATCH, function($e) {
+      foreach ($this->getServiceConfig()['factories'] as $fabrique => $classe) {
+      echo $fabrique . "<br />";
+      }
+      }, 100);
+      }
+     */
 }

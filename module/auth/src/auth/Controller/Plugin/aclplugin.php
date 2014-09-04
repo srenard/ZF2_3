@@ -44,11 +44,12 @@ class AclPlugin extends AbstractPlugin {
                 ->addResource(new Resource('contact'))
                 ->addResource(new Resource('message'))
                 ->addResource(new Resource('plan'))
-                ->addResource(new Resource('art'));
+                ->addResource(new Resource('art'))
+                ->addResource(new Resource('fabrication'));
                         /*
                 ->addResource(new Resource('valide'))
                 ->addResource(new Resource('delete'))
-                ->addResource(new Resource('fabrication'))
+                
                 ->addResource(new Resource('accueil'))
                 ->addResource(new Resource('d1'))
                 ->addResource(new Resource('formulaire'));
@@ -81,9 +82,11 @@ class AclPlugin extends AbstractPlugin {
         $acl->allow('visiteur', 'message');
         $acl->allow('visiteur', 'plan');
         $acl->allow('visiteur', 'art');
+        
+        $acl->allow('visiteur', 'fabrication');
         /*
         $acl->allow('visiteur', 'delete');
-        $acl->allow('visiteur', 'fabrication');
+        
 
         $acl->allow('visiteur', 'valide');
 
