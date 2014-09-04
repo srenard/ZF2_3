@@ -3,11 +3,12 @@
 namespace Articles;
 
 use Zend\ModuleManager\ModuleManager;
-
 use Articles\Model\Articles;
 use Articles\Model\ArticlesTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
+//Pour Attacher un événement
+use Zend\Mvc\MvcEvent;
 
 class Module {
 
@@ -46,4 +47,26 @@ class Module {
         );
     }
 
+    /*
+      public function onBootstrap(MvcEvent $event) {
+      $eventManager = $event->getApplication()->getEventManager();
+      $eventManager->attach(MvcEvent::EVENT_DISPATCH, function($e) {
+      $date = new \DateTime();
+      $date->setTimestamp($e->getApplication()
+      ->getRequest()->getServer()->REQUEST_TIME);
+      echo $date->format('Y-m-d H:i:s');
+      }, 100);
+      }
+     */
+    
+    /*
+    public function onBootstrap(MvcEvent $event) {
+        $eventManager = $event->getApplication()->getEventManager();
+        $eventManager->attach(MvcEvent::EVENT_DISPATCH, function($e) {
+            foreach ($this->getServiceConfig()['factories'] as $fabrique => $classe) {
+                echo $fabrique . "<br />";
+            }
+        }, 100);
+    }
+    */
 }
