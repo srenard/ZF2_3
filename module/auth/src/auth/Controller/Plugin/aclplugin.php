@@ -29,7 +29,6 @@ class AclPlugin extends AbstractPlugin {
                 ->addResource(new Resource('edit'))
                 ->addResource(new Resource('accueil'))
                 ->addResource(new Resource('voyage'))
-  
                 ->addResource(new Resource('societe'))
                 ->addResource(new Resource('histoire'))
                 ->addResource(new Resource('histoire1'))
@@ -45,15 +44,11 @@ class AclPlugin extends AbstractPlugin {
                 ->addResource(new Resource('message'))
                 ->addResource(new Resource('plan'))
                 ->addResource(new Resource('art'))
-                ->addResource(new Resource('fabrication'));
-                        /*
+                ->addResource(new Resource('fabrication'))
                 ->addResource(new Resource('valide'))
                 ->addResource(new Resource('delete'))
-                
-                ->addResource(new Resource('accueil'))
                 ->addResource(new Resource('d1'))
                 ->addResource(new Resource('formulaire'));
-                 */
 // Création des autorisations
         $acl->allow('visiteur', 'entree');
         $acl->allow('visiteur', 'index');
@@ -84,16 +79,14 @@ class AclPlugin extends AbstractPlugin {
         $acl->allow('visiteur', 'art');
         
         $acl->allow('visiteur', 'fabrication');
-        /*
         $acl->allow('visiteur', 'delete');
         
-
         $acl->allow('visiteur', 'valide');
 
         $acl->allow('visiteur', 'd1');
 
         $acl->allow('visiteur', 'formulaire');
-         */
+
         //$acl->deny('admin', 'histoire');
 
         $action = $e->getRouteMatch()->getParams()['action'];

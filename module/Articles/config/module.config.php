@@ -47,6 +47,19 @@ return array(
                         'action' => 'fabrication'
                     )
                 )
+            ),
+            'articles_pages' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/articles/p[/:pages]',
+                    'constraints' => array(
+                        'page' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Articles\Controller\Articles',
+                        'action' => 'tableau'
+                    )
+                )
             )
         ),
     ),

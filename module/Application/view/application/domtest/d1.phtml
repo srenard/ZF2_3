@@ -1,0 +1,8 @@
+<h1>Dom</h1>
+<?php
+echo 'Nombre d\'articles : ' . count($r) . "<br />";
+$k = 1;
+foreach ($r as $item) {
+    echo $k++ . ' : ' . $item->nodeValue . '<br />';
+}
+

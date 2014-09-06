@@ -51,3 +51,9 @@ div.container a.brand {
 #conteneur1 input{
     text-align: right;
 }
+
+/* Pagination*/
+.paginationControl{
+background-color: #eef;
+text-align:center;
+}

@@ -7,6 +7,9 @@ use Zend\View\Model\ViewModel;
 use Articles\Model\Articles;
 use Articles\Form\ArticlesForm;
 
+use Zend\Db\Sql\Select;
+use Zend\Paginator\Adapter\DbSelect;
+use Zend\Paginator\Paginator;
 /*
   class ArticlesController extends AbstractActionController {
 
@@ -39,11 +42,23 @@ class ArticlesController extends AbstractActionController {
      * 
      * @return \Zend\View\Model\ViewModel
      */
+    /*
     public function tableauAction() {
         return new ViewModel(array('articles' =>
             $this->getArticlesTable()->fetchAll()));
     }
-
+    */
+    public function tableauAction(){
+        $sm = $this->getServiceLocator();
+        $this->adaptateur = $sm->get('Zend\Db\Adapter\Adapter');
+        $select = new Select('articles');
+        $DbSelect = new DbSelect($select,$this->adaptateur);
+        $paginateur = new Paginator($DbSelect);
+        $paginateur->setCurrentPageNumber($this->params()->fromRoute('pages'));
+        $vm = new ViewModel();
+        $vm->setVariable('paginator',$paginateur);
+        return $vm;
+    }
     public function addAction() {
         $form = new ArticlesForm();
         $form->get('submit')->setValue('Add');

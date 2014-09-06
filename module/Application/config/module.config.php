@@ -88,7 +88,9 @@ return array(
             'Application\Controller\Db' =>
                                 'Application\Controller\DbController',
             'Application\Controller\validateurs' =>
-                                'Application\Controller\validateursController'
+                                'Application\Controller\validateursController',
+            'Application\Controller\Domtest' => 
+                                    'Application\Controller\DomtestController'
         ),
     ),
     'view_manager' => array(

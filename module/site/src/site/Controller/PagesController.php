@@ -40,7 +40,7 @@ class PagesController extends AbstractActionController {
 
     public function histoire1Action() {
         $this->layout()->setTemplate('Site/layout/layoutStatique.phtml');
-/*
+
         $cache = \Zend\Cache\StorageFactory::factory(array(
                     'adapter' => array(
                         'name' => 'filesystem'
@@ -74,7 +74,6 @@ class PagesController extends AbstractActionController {
                 // 'r8' => Mathematiques::factoto(150)
         ));
  
- */
          return new ViewModel(array(
             'titre' => 'Notre histoire',
         ));

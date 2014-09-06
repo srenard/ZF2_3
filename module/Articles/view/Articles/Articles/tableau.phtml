@@ -1,4 +1,5 @@
 <?php
+/*
 $title = 'Mes articles';
 $this->headTitle($title);
 ?>
@@ -7,6 +8,7 @@ $this->headTitle($title);
     <a href="<?php echo $this->url('articles', array('action' => 'add')); ?>">
         Ajouter un article</a>
 </p>
+
 <table class="table">
     <tr>
         <th>Nom</th>
@@ -16,24 +18,64 @@ $this->headTitle($title);
         <th>Prix</th>
         <th>&nbsp;</th>
     </tr>
-<?php foreach ($articles as $article) : ?>
-    <tr>
-        <td><?php echo $this->escapeHtml($article->articles_nom); ?></td>
-        <td><?php echo $this->escapeHtml($article->articles_ref) ?></td>
-        <td><?php echo $article->articles_stock; ?></td>
-        <td><?php echo $article->articles_min; ?></td>
-        <td><?php echo $article->articles_prix; ?></td>
-        <td>
-            <a href="<?php
-            echo $this->url('articles', array('action' => 'edit', 'id' => $article->articles_id));
-            ?>">Modifier</a>
-            <a href="<?php
-            echo $this->url('articles', array('action' => 'delete',
-                'id' => $article->articles_id));
-            ?>">Supprimer</a>
-        </td>
-    </tr>
+    <?php foreach ($articles as $article) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($article->articles_nom); ?></td>
+            <td><?php echo $this->escapeHtml($article->articles_ref) ?></td>
+            <td><?php echo $article->articles_stock; ?></td>
+            <td><?php echo $article->articles_min; ?></td>
+            <td><?php echo $article->articles_prix; ?></td>
+
+            <td>
+                <a href="<?php echo $this->url('articles', array('action' => 'edit', 'id' => $article->articles_id));
+    ?>">Modifier</a>
+                <a href="<?php echo $this->url('articles', array('action' => 'delete', 'id' => $article->articles_id));
+    ?>">Effacer</a>
+            </td>
+        </tr>
     <?php endforeach; ?>
 </table>
+*/
 
+$title = 'Mes articles';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('articles', array('action' => 'add')); ?>">
+        Ajouter un article</a>
+</p>
+<?php if (count($this->paginator)): ?>
+<table class="table"> 
+    <tr>
+        <th>Nom</th>
+        <th>Référence</th>
+        <th>Stock actuel</th>
+        <th>Stock minimum</th>
+        <th>Prix</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($this->paginator as $item): ?>
+        <tr>
+                <td> <?php echo $item['articles_nom']; ?></td>
+                <td> <?php echo $item['articles_ref']; ?></td>
+                <td> <?php echo $item['articles_stock']; ?></td>
+                <td> <?php echo $item['articles_min']; ?></td>
+                <td> <?php echo $item['articles_prix']; ?></td>
+                <td>
+                    <a href="<?php echo $this->url('articles', 
+                      array('action' => 'edit', 'id' => $item['articles_id']));
+            ?>"><img src='/img/b_edit.png' /></a>
+                    <a href="<?php
+                    echo $this->url('articles', array('action' => 'delete', 
+                        'id' => $item['articles_id']));
+                    ?>"><img src='/img/b_drop.png' /></a>
+                </td>  
+            </tr>
+    <?php endforeach; ?>
+</table>
+<?php endif; ?>
 
+<?php
+echo $this->paginationControl($this->paginator, 'Sliding',
+	'layout/controles.phtml');

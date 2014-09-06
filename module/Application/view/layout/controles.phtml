@@ -1,0 +1,44 @@
+<?php if ($this->pageCount): ?>
+<div class="paginationControl">
+<?php echo $this->firstItemNumber; ?> - <?php echo $this->lastItemNumber; ?>
+ sur <?php echo $this->totalItemCount; ?>
+
+<!-- Lien première page -->
+<?php if (isset($this->previous)): ?>
+  <a href="<?php echo $this->url('articles_pages', array('pages' => $this->first)); ?>">
+    &nbsp;&nbsp;&nbsp;Première page
+  </a> |
+<?php else: ?>
+  <span class="disabled">Première page</span> |
+<?php endif; ?>
+
+<!-- Lien page précédente -->
+<?php if (isset($this->previous)): ?>
+  <a href="<?php echo $this->url('articles_pages', array('pages' => $this->previous)); ?>">
+    &lt; Page précédente
+  </a> |
+<?php else: ?>
+  <span class="disabled">&lt; Page précédente</span> |
+<?php endif; ?>
+
+<!-- Lien page suivante -->
+<?php if (isset($this->next)): ?>
+  <a href="<?php echo $this->url('articles_pages', array(
+      'pages' => $this->next)); ?>">
+    Page suivante &gt;
+  </a> |
+<?php else: ?>
+  <span class="disabled">Page suivante &gt;</span> |
+<?php endif; ?>
+
+<!-- Lien dernière page -->
+<?php if (isset($this->next)): ?>
+  <a href="<?php echo $this->url('articles_pages', array('pages' => $this->last)); ?>">
+    Dernière page
+  </a>
+<?php else: ?>
+  <span class="disabled">Dernière page</span>
+<?php endif; ?>
+
+</div>
+<?php endif; ?>
