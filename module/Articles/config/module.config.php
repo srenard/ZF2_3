@@ -1,16 +1,7 @@
 <?php
 
 return array(
-    'service_manager' => array(
-        'factories' => array(
-            'Zend\Log' => function($sm) {
-        $log = new \Zend\Log\Logger();
-        $writer = new \Zend\Log\Writer\Stream("log_r2.txt");
-        $log->addWriter($writer);
-        return $log;
-    }
-        ),
-    ),
+   
     'controllers' => array(
         'invokables' => array(
             'Articles\Controller\Articles' => 'Articles\Controller\ArticlesController',

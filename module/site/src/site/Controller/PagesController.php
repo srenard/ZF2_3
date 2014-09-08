@@ -57,9 +57,9 @@ class PagesController extends AbstractActionController {
         if (!$success) {
             $result = Mathematiques::quasifacto(150);
             $cache->setItem($key, $result);
-            //echo "calcul";
+            //echo "calcul--------------------------------------------------";
         } else {
-            //echo 'non calcul';
+            //echo 'non calcul-----------------------------------------------';
         }
         return new ViewModel(array(
             'titre' => 'Notre histoire',
