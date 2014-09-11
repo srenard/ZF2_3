@@ -49,5 +49,11 @@ class VoyageController extends AbstractActionController {
         $this->layout()->setTemplate('Routestest/layoutsLocaux/local_1.phtml');
         return new ViewModel();
     }
+    public function statAction() {
+        $this->layout()->setTemplate('Routestest/layoutsLocaux/local_1.phtml');
+        $params = $this->params()->fromRoute();
+        return new ViewModel(array('params' => $params));
+    }
+
 
 }

@@ -8,8 +8,20 @@ return array(
     ),
     'router' => array(
         'routes' => array(
+            'exercice' => array(
+                'type' => 'Regex',
+                'options' => array(
+                    'route' => '/stats[/annee][/departement][/legume]',
+                    'regex' => '/stats/(?<annee>[0-9]{4})/(?<departement>[0-9]{2})/(?<legume>[a-zA-Z]+)',
+                    'spec' => '/stats/%annee%/%departement%/%legume%',
+                    'defaults' => array(
+                        'controller' => 'routestest\Controller\Voyage',
+                        'action' => 'stat',
+                    )
+                ),
+            ),
             'voyage2' => array(
-                'type' => '\Regex', // type Regex
+                'type' => 'Regex', // type Regex
                 'options' => array(
                     'route' => '/destination[/pays]',
                     'regex' => '/destination/(?<pays>[a-zA-Z]+)',
