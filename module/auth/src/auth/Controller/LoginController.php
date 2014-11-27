@@ -81,7 +81,7 @@ class LoginController extends AbstractActionController {
                     $storage = $this->getAuthService()->getStorage();
                     $identification = $this->getAuthService()
                             ->getAdapter()
-                            ->getResultRowObject(null, 'utilisateurs_passe');
+                            ->getResultRowObject(null, 'admin_passe');
                     $this->getAuthService()->getStorage()->write($identification);
                 }
             }

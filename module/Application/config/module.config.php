@@ -10,6 +10,16 @@
 return array(
     'router' => array(
         'routes' => array(
+            'test' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/testA',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Test',
+                        'action' => 'test1',
+                    ),
+                ),
+            ),
             'Db' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -90,7 +100,9 @@ return array(
             'Application\Controller\validateurs' =>
                                 'Application\Controller\validateursController',
             'Application\Controller\Domtest' => 
-                                    'Application\Controller\DomtestController'
+                                    'Application\Controller\DomtestController',
+            'Application\Controller\Test' => 
+                                    'Application\Controller\TestController',
         ),
     ),
     'view_manager' => array(

@@ -11,12 +11,25 @@ $form->prepare();
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('articles_id'));
 echo "<div id='conteneur1'>";
-echo "<div id='a_nom'>".$this->formRow($form->get('articles_nom'))."</div>";
-echo "<div id='a_ref'>".$this->formRow($form->get('articles_ref'))."</div>";
-echo "<div id='a_stock'>".$this->formRow($form->get('articles_stock'))."</div>";
-echo "<div id='a_min'>".$this->formRow($form->get('articles_min'))."</div>";
-echo "<div id='a_prix'>".$this->formRow($form->get('articles_prix'))."</div>";
-echo "<div id='a_sub'>".$this->formSubmit($form->get('submit'))."</div>";
+echo "<div id='a_nom'>" . $this->formRow($form->get('articles_nom')) . "</div>";
+echo "<div id='a_ref'>" . $this->formRow($form->get('articles_ref')) . "</div>";
+echo "<div id='a_stock'>" . $this->formRow($form->get('articles_stock')) . "</div>";
+echo "<div id='a_min'>" . $this->formRow($form->get('articles_min')) . "</div>";
+echo "<div id='a_prix'>" . $this->formRow($form->get('articles_prix')) . "</div>";
+echo "<div id='a_sub'>" . $this->formSubmit($form->get('submit')) . "</div>";
 
 echo $this->form()->closeTag();
 echo "</div>";
+echo "<hr>";
+
+$form2->setAttribute(
+        'action', $this->url('articles', array(
+        ))
+);
+
+$form2->prepare();
+echo $this->form()->openTag($form2);
+echo $this->formCollection($form2);
+echo $this->form()->closeTag();
+
+var_dump($form2);

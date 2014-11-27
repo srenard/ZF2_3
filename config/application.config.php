@@ -8,7 +8,8 @@ return array(
         'Routestest',
         'Clients',
         'auth',
-        'site'
+        'site',
+        'ZFTool',
     ),
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(

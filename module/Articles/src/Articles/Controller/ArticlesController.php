@@ -10,6 +10,9 @@ use Articles\Form\ArticlesForm;
 use Zend\Db\Sql\Select;
 use Zend\Paginator\Adapter\DbSelect;
 use Zend\Paginator\Paginator;
+
+use Zend\Form\Annotation\AnnotationBuilder;
+use Articles\Form\Annotation1Form;
 /*
   class ArticlesController extends AbstractActionController {
 
@@ -60,6 +63,7 @@ class ArticlesController extends AbstractActionController {
         return $vm;
     }
     public function addAction() {
+        echo "a1";
         $form = new ArticlesForm();
         $form->get('submit')->setValue('Add');
         $request = $this->getRequest();
@@ -74,7 +78,15 @@ class ArticlesController extends AbstractActionController {
                 return $this->redirect()->toRoute('articles');
             }
         }
-        return array('form' => $form);
+                echo "a2";
+        $builder = new AnnotationBuilder();
+        echo "a4";
+        $AnnotationForm = new Annotation1Form();
+        echo "a5";
+        $form2 = $builder->createForm($AnnotationForm);
+        echo "a6"; 
+        return array('form' => $form,
+                     'form2' => $form2);
     }
 
     public function editAction() {
