@@ -57,3 +57,17 @@ div.container a.brand {
 background-color: #eef;
 text-align:center;
 }
+.A_string{
+    background-color: #8ff;
+}
+#Annotation1Form{
+    background-color: #fef;
+}
+#Annotation1Form label{
+    display:block;
+}
+#Annotation1Form label span{
+    display:block;
+    width: 250px;
+    float:left;
+}

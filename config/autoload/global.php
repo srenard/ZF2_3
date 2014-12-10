@@ -12,12 +12,22 @@
  * file.
  */
 return array(
+    /*
     'db' => array(
         'driver' => 'Pdo',
         'dsn' => 'mysql:dbname=fox;host=localhost',
         'driver_options' => array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ),
+        )
+    ),
+     */
+    'db' => array(
+        'driver' => 'Pgsql',
+        'username' => 'postgres',
+        'password' => 'moudeveau91',
+        'dbname' => 'Base_1',
+        
+        
     ),
     'service_manager' => array(
         'factories' => array(

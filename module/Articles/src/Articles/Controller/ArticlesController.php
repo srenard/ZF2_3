@@ -6,13 +6,12 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Articles\Model\Articles;
 use Articles\Form\ArticlesForm;
-
 use Zend\Db\Sql\Select;
 use Zend\Paginator\Adapter\DbSelect;
 use Zend\Paginator\Paginator;
-
 use Zend\Form\Annotation\AnnotationBuilder;
 use Articles\Form\Annotation1Form;
+
 /*
   class ArticlesController extends AbstractActionController {
 
@@ -46,24 +45,24 @@ class ArticlesController extends AbstractActionController {
      * @return \Zend\View\Model\ViewModel
      */
     /*
+      public function tableauAction() {
+      return new ViewModel(array('articles' =>
+      $this->getArticlesTable()->fetchAll()));
+      }
+     */
     public function tableauAction() {
-        return new ViewModel(array('articles' =>
-            $this->getArticlesTable()->fetchAll()));
-    }
-    */
-    public function tableauAction(){
         $sm = $this->getServiceLocator();
         $this->adaptateur = $sm->get('Zend\Db\Adapter\Adapter');
         $select = new Select('articles');
-        $DbSelect = new DbSelect($select,$this->adaptateur);
+        $DbSelect = new DbSelect($select, $this->adaptateur);
         $paginateur = new Paginator($DbSelect);
         $paginateur->setCurrentPageNumber($this->params()->fromRoute('pages'));
         $vm = new ViewModel();
-        $vm->setVariable('paginator',$paginateur);
+        $vm->setVariable('paginator', $paginateur);
         return $vm;
     }
+
     public function addAction() {
-        echo "a1";
         $form = new ArticlesForm();
         $form->get('submit')->setValue('Add');
         $request = $this->getRequest();
@@ -78,17 +77,38 @@ class ArticlesController extends AbstractActionController {
                 return $this->redirect()->toRoute('articles');
             }
         }
-                echo "a2";
         $builder = new AnnotationBuilder();
-        echo "a4";
         $AnnotationForm = new Annotation1Form();
-        echo "a5";
         $form2 = $builder->createForm($AnnotationForm);
-        echo "a6"; 
         return array('form' => $form,
-                     'form2' => $form2);
+            'form2' => $form2);
     }
-
+/*
+    public function add2Action() {
+        $builder = new AnnotationBuilder();
+        $AnnotationForm = new Annotation1Form();
+        $form2 = $builder->createForm($AnnotationForm);
+        $request = $this->getRequest();
+        //$form->get('submit')->setValue('Add');
+        //var_dump($request);
+        //exit();
+        if ($request->isPost()) {
+            //$article = new Articles();
+            //$form->setInputFilter($article->getInputFilter());
+            //$form2->setData($request->getPost());
+            //if ($form2->isValid()) {
+            //echo "ok8";
+            //exit();
+            //$article->exchangeArray($form2->getData());
+            //$this->getArticlesTable()->saveArticles($article);
+            $data = $request->getPost();
+            var_dump($data);
+            exit();
+            return $this->redirect()->toRoute('articles');
+        }
+        return array('form2' => $form2);
+    }
+*/
     public function editAction() {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {

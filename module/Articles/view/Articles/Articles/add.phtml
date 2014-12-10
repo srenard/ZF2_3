@@ -20,16 +20,3 @@ echo "<div id='a_sub'>" . $this->formSubmit($form->get('submit')) . "</div>";
 
 echo $this->form()->closeTag();
 echo "</div>";
-echo "<hr>";
-
-$form2->setAttribute(
-        'action', $this->url('articles', array(
-        ))
-);
-
-$form2->prepare();
-echo $this->form()->openTag($form2);
-echo $this->formCollection($form2);
-echo $this->form()->closeTag();
-
-var_dump($form2);

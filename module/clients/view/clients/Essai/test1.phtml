@@ -1,0 +1,13 @@
+<?php
+$title = 'Ajout d\'un article';
+$this->headTitle($title);
+?>
+<h1>Formulaire par annotations</h1>
+<?php
+$form2->setAttribute(
+        'action', $this->url('formulaire1')
+);
+$form2->prepare();
+echo $this->form()->openTag($form2);
+echo $this->formCollection($form2);
+echo $this->form()->closeTag();

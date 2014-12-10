@@ -2,6 +2,8 @@
 namespace Application\Controller;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
+use Zend\Test\PHP
+
 class TestController extends AbstractHttpControllerTestCase
 {
     public function setUp()

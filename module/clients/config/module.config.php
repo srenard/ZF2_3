@@ -4,6 +4,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Clients\Controller\Clients' => 'Clients\Controller\ClientsController',
+            'Clients\Controller\Essai' => 'Clients\Controller\EssaiController'
         ),
     ),
     'view_manager' => array(
@@ -37,6 +38,28 @@ return array(
                     ),
                 ),
             ),
+            // Test formulaire 1
+            'formulaire1' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => '/formulaire1',
+                    'defaults' => array(
+                        'controller' => 'Clients\Controller\Essai',
+                        'action' => 'test1'
+                    )
+                ),
+            ),
+            // Test formulaire 2
+            'formulaire2' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => '/formulaire2',
+                    'defaults' => array(
+                        'controller' => 'Clients\Controller\Essai',
+                        'action' => 'test2'
+                    )
+                ),
+            )
         ),
     ),
 );
