@@ -12,7 +12,7 @@
  * file.
  */
 return array(
-    /*
+    
     'db' => array(
         'driver' => 'Pdo',
         'dsn' => 'mysql:dbname=fox;host=localhost',
@@ -20,15 +20,14 @@ return array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         )
     ),
-     */
+     /*
     'db' => array(
         'driver' => 'Pgsql',
         'username' => 'postgres',
         'password' => 'moudeveau91',
-        'dbname' => 'Base_1',
-        
-        
+        'dbname' => 'Base_2',    
     ),
+      */
     'service_manager' => array(
         'factories' => array(
             'Zend\Db\Adapter\Adapter'
