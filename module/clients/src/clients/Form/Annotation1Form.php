@@ -3,7 +3,7 @@
 namespace Clients\Form;
 
 use Zend\Form\Annotation;
-use Clients\Form\Reset;
+//use Clients\Form\Reset;
 use Clients\PersoFilter;
 
 //use Clients\Form\AdresseFieldset;
@@ -24,8 +24,10 @@ class Annotation1Form {
      * @Annotation\Attributes({"class":"A_string"})
      * @Annotation\Attributes({"value":"En majuscules, SVP !"})
      * @Annotation\required
-     * @Annotation\Validator({"name": "StringLength", "options": {"min":3, "max": 5}})
-     * @Annotation\ErrorMessage("Entre 3 et 5 caractères, s'il vous plaït !")
+     * @Annotation\Validator({"name": "StringLength", 
+     * "options": {"min":3, "max": 5}})
+     * @Annotation\ErrorMessage
+     * ("Entre 3 et 5 caractères, s'il vous plaït !")
      * @Annotation\Filter({"name":"StringToUpper"})
      */
     public $nom;
@@ -65,7 +67,7 @@ class Annotation1Form {
     public $abonne;
    
     /**
-     * @Annotation\Type("Articles\Form\Reset")
+     * @Annotation\Type("Clients\Form\Reset")
      * @Annotation\Attributes({"value":"Reset"})
      */
     public $reset;
